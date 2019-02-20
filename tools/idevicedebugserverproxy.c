@@ -100,8 +100,9 @@ static void *thread_device_to_client(void *data)
 				// try again
 				continue;
 			} else {
-				fprintf(stderr, "recv failed: %s\n", strerror(errno));
-				break;
+				//fprintf(stderr, "recv failed: %s\n", strerror(errno));
+				debug("recv failed: %s\n", strerror(errno));
+				//break;
 			}
 		} else {
 			/* send to device */
@@ -109,8 +110,9 @@ static void *thread_device_to_client(void *data)
 			sent = socket_send(socket_info->client_fd, buffer, recv_len);
 			if (sent < recv_len) {
 				if (sent <= 0) {
-					fprintf(stderr, "send failed: %s\n", strerror(errno));
-					break;
+					debug("send failed: %s\n", strerror(errno));
+					//fprintf(stderr, "send failed: %s\n", strerror(errno));
+					//break;
 				} else {
 					fprintf(stderr, "only sent %d from %d bytes\n", sent, recv_len);
 				}
@@ -186,8 +188,9 @@ static void *thread_client_to_device(void *data)
 
 			if (sent < recv_len || res != DEBUGSERVER_E_SUCCESS) {
 				if (sent <= 0) {
-					fprintf(stderr, "send failed: %s\n", strerror(errno));
-					break;
+					debug("send failed: %s\n", strerror(errno));
+					//fprintf(stderr, "send failed: %s\n", strerror(errno));
+					//break;
 				} else {
 					fprintf(stderr, "only sent %d from %d bytes\n", sent, recv_len);
 				}
