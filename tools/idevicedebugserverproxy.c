@@ -134,6 +134,17 @@ static void *thread_device_to_client(void *data)
 
 static void *thread_client_to_device(void *data)
 {
+	debug("%s\n", __func__);
+	debug("%s\n", __func__);
+	debug("%s\n", __func__);
+	debug("%s\n", __func__);
+	debug("%s\n", __func__);
+	debug("%s\n", __func__);
+	debug("%s\n", __func__);
+	debug("%s\n", __func__);
+	debug("%s\n", __func__);
+	debug("%s\n", __func__);
+	
 	socket_info_t* socket_info = (socket_info_t*)data;
 	debugserver_error_t res = DEBUGSERVER_E_UNKNOWN_ERROR;
 
@@ -164,8 +175,9 @@ static void *thread_client_to_device(void *data)
 				/* try again */
 				continue;
 			} else {
-				fprintf(stderr, "Receive failed: %s\n", strerror(errno));
-				break;
+				debug("Receive failed: %s\n", strerror(errno));
+				//fprintf(stderr, "Receive failed: %s\n", strerror(errno));
+				//break;
 			}
 		} else {
 			/* forward data to device */
